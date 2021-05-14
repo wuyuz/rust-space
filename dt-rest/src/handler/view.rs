@@ -1,9 +1,10 @@
-use actix_web::{web,HttpResponse,http,web::{block,Json},Responder,HttpRequest};
+use actix_web::{web,HttpResponse,http::StatusCode,web::{block,Json},Responder,HttpRequest};
 use crate::errors::ServiceError;
 use crate::model::*;
 use bson::{oid::ObjectId,Document};
 use futures::future::{ready, Ready};
 use crate::db;
+use chrono::prelude::*;
 
 use mongodb::{
     Database,
@@ -27,7 +28,7 @@ pub fn detail(
 }
 
 // 详情数据服务
-pub async fn detail_service(
+pub async fn find_service(
     detail: web::Json<DetailQuery>,
     db: web::Data<Database>
 ) -> Result<Json<Vec<Document>>, ServiceError>  {
@@ -44,6 +45,64 @@ pub async fn detail_service(
     }
     Ok(Json(data))
 }
+
+// 详情数据服务
+pub async fn detail_service(
+    query: web::Json<DetailQuery>,
+    db: web::Data<Database>
+) -> Result<Json<Document>, ServiceError>  {
+    let coll = db.collection("dt_view");
+    let mut p = "$plates".to_string();
+    let qp = query.plate.as_str();
+    let key = query.key.as_str();
+    let mut day_time = query.day_time.as_str();
+    let mut local: DateTime<Utc> = Utc::today().and_hms(0, 0, 0);
+    if key == "" {
+        return Err(ServiceError::new(StatusCode::BAD_REQUEST, "Must be require key".to_owned()))
+    }
+
+    if day_time != "" {
+        let local = match day_time.parse::<DateTime<Utc>>() {
+            Ok(r) => r,
+            Err(e) => return Err(ServiceError::new(StatusCode::BAD_REQUEST, e.to_string()))
+        };
+    }
+
+    if qp != "" {
+        p = p +"."+ qp 
+    }
+    println!("{}",local);
+    let pipeline = vec![
+        doc! {
+          "$match": {
+            "_key": key,
+            "day_time": local,
+          }
+        },
+        doc! {
+          "$addFields": {
+            "plate_map":  p
+          }
+        },
+        doc! {
+          "$project": {
+            "_id":        0,
+            "_key":       0,
+            "factory_id": 0,
+            "out_put":    0,
+            "plates":     0
+          }
+        },
+    ];
+
+    let mut cursor = coll.aggregate(pipeline, None).await.expect("aggregate should succeed");
+    let mut data = Document::new();
+    while let Some(doc) = cursor.next().await {
+       data = doc.unwrap();
+      }
+    Ok(Json(data))
+}
+
 
 #[cfg(test)]
 #[allow(non_snake_case)]
@@ -70,4 +129,11 @@ mod test {
         Ok(())
     }
 
+
+    #[test]
+    fn test_string() {
+        use chrono::prelude::*;
+        let local: DateTime<Utc> = Utc::now();
+        println!("{}",Utc::today().and_hms(8, 0, 0))
+    }
 }

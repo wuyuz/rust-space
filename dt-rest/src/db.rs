@@ -12,14 +12,9 @@ use mongodb::error::Error;
 async fn create_mongo_client() -> Client {
     let mongo_connection_string = get_connection_string();
     Client::with_uri_str(&mongo_connection_string).await.expect("Client error")
-
 }
 
-
 fn get_connection_string() -> String {
-    // let host = env::var("MONGO_HOST").expect("MONGO_HOST env not set.");    // TODO check if this is shit for performance
-    // let port = env::var("MONGO_PORT").expect("MONGO_PORT env not set.");    // TODO check if this is shit for performance
-    // "mongodb://".to_owned() + &host + ":" + &port
     env::var("Mongo_DATABASE_URL").expect("DB Connection error")
 }
 
@@ -30,6 +25,6 @@ pub async fn get_db() -> Database {
 }
 
 pub async fn get_db_test() -> Database {
-    let c = Client::with_uri_str("mongodb://dt:ikQ_%5D92TT2k@mongodb.dev-tcp.shiloh-nantong.com:30001/?authSource=dt".into()).await.expect("Client error");
+    let c = Client::with_uri_str("mongodb://114.215.84.163:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false".into()).await.expect("Client error");
     c.database("dt")
 }

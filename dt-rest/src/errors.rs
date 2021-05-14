@@ -52,7 +52,8 @@ impl ResponseError for ServiceError {
             true => "Ok".to_string(),
             false => {
                 error!("{:?}", self.body);
-                "Internal server error".to_string()
+                // "Internal server error".to_string()
+                self.body.message.to_string()
             },
         };
 

@@ -9,10 +9,10 @@ use serde::{Serialize, Deserialize, Serializer};
 pub struct DetailQuery {
     pub key: String,
 
-    day_time: String,
+    pub day_time: String,
 
     #[serde(default)]
-    plate: String,
+    pub plate: String,
 }
 
 // 数据模型
