@@ -1,5 +1,5 @@
 [package]
-name = "test-back"
+name = "c-mac"
 version = "0.1.0"
 authors = ["wlx"]
 edition = "2018"
@@ -8,6 +8,7 @@ edition = "2018"
 
 [dependencies]
 tracing = { version = "0.1.22" }
+instant = { version = "0.1.6", features = ["wasm-bindgen"] }
 
 [dependencies.druid]
 druid = "0.7.0"

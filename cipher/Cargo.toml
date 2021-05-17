@@ -1,0 +1,8 @@
+
+[workspace]
+
+members = [
+    "service",
+    "base",
+    "c-mac",
+]
