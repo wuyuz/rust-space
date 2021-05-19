@@ -35,11 +35,6 @@ pub fn build_root_widget() -> impl Widget<HelloState> {
 
 
 pub fn build_app_widget() -> impl Widget<AppStauts> {
-    // let textbox = TextBox::new()
-    //     .with_placeholder("search passwords")
-    //     .with_text_size(18.0)
-    //     .lens(Search::text);
-
     let textbox2 = TextBox::new()
         .with_placeholder("search passwords")
         .with_text_size(18.0)

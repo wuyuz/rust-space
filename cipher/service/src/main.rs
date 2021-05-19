@@ -1,57 +1,60 @@
-use actix_web::{web, App, HttpServer};
-use opentelemetry::{
-    global, runtime::TokioCurrentThread, sdk::propagation::TraceContextPropagator,
-};
-use std::io;
-use tracing_actix_web::TracingLogger;
-use tracing_bunyan_formatter::{BunyanFormattingLayer, JsonStorageLayer};
-use tracing_subscriber::layer::SubscriberExt;
-use tracing_subscriber::{EnvFilter, Registry};
+#![allow(unused)]
+
+#[macro_use]
+extern crate actix_web;
+#[macro_use]
+extern crate serde_derive;
+#[macro_use]
+extern crate serde_json;
+extern crate actix_cors;
+extern crate serde;
+extern crate dotenv;
+extern crate futures;
+extern crate failure;
+extern crate derive_more;
+extern crate uuid;
+extern crate diesel;
+
+mod logger;
+mod db;
+mod handler;
+
+use actix_web::{web, App, HttpServer,http};
+use std::{io,env};
 use tracing::{instrument, info, error};
-
-async fn hello() -> &'static str {
-    error!("dfasf");
-    "Hello world!"
-}
-
-fn init_telemetry() {
-    let app_name = "test-back";
-
-    // Start a new Jaeger trace pipeline.
-    // Spans are exported in batch - recommended setup for a production application.
-    global::set_text_map_propagator(TraceContextPropagator::new());
-    let tracer = opentelemetry_jaeger::new_pipeline()
-        .with_service_name(app_name)
-        .install_batch(TokioCurrentThread)
-        .expect("Failed to install OpenTelemetry tracer.");
-
-    // Filter based on level - trace, debug, info, warn, error
-    // Tunable via `RUST_LOG` env variable
-    let env_filter = EnvFilter::try_from_default_env().unwrap_or(EnvFilter::new("info"));
-    // Create a `tracing` layer using the Jaeger tracer
-    let telemetry = tracing_opentelemetry::layer().with_tracer(tracer);
-    // Create a `tracing` layer to emit spans as structured logs to stdout
-    let formatting_layer = BunyanFormattingLayer::new(app_name.into(), std::io::stdout);
-    // Combined them all together in a `tracing` subscriber
-    let subscriber = Registry::default()
-        .with(env_filter)
-        .with(telemetry)
-        .with(JsonStorageLayer)
-        .with(formatting_layer);
-    tracing::subscriber::set_global_default(subscriber)
-        .expect("Failed to install `tracing` subscriber.")
-}
+use actix_cors::Cors;
+use tracing_actix_web::TracingLogger;
 
 #[actix_web::main]
 async fn main() -> io::Result<()> {
-    init_telemetry();
+    logger::init_telemetry();
+    dotenv::dotenv().expect("Failed to read .env file");
+    env::set_var("RUST_LOG", "actix_web=debug");
+    // 读取环境变量
+    let app_host = env::var("APP_HOST").expect("APP_HOST not found.");
+    let app_port = env::var("APP_PORT").expect("APP_PORT not found.");
+    let db_url = env::var("DATABASE_URL").expect("DATABASE_URL not found.");
+    let app_url = format!("{}:{}", &app_host, &app_port);
+
+    // 加载配置
+    let pool = db::init_pool(&db_url).expect("DB pool init error");
 
     HttpServer::new(move || {
+        let cors = Cors::default()
+            .allowed_origin("http://127.0.0.1:3000")
+            .allowed_origin("http://localhost:3000")
+            .allowed_methods(vec!["GET", "POST"])
+            .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
+            .allowed_header(http::header::CONTENT_TYPE)
+            .max_age(3600);
+
         App::new()
-            .wrap(TracingLogger::default())
-            .service(web::resource("/hello").to(hello))
+            .data(pool.clone())
+            .wrap(cors)
+            .wrap(TracingLogger)
+            .service(web::resource("/").to(handler::index::index))
     })
-    .bind("127.0.0.1:8080")?
+    .bind(&app_url)?
     .run()
     .await?;
 
