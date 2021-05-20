@@ -26,7 +26,7 @@ CREATE TABLE user
     settings   VARBINARY(5120) NOT NULL,
     created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    enabled    TINYINT         NOT NULL DEFAULT 1,
+    enabled    TINYINT         NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 ) ENGINE = INNODB;
 

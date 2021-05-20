@@ -15,9 +15,13 @@ extern crate derive_more;
 extern crate uuid;
 extern crate diesel;
 
+
 mod logger;
 mod db;
 mod handler;
+mod router;
+mod model;
+mod utils;
 
 use actix_web::{web, App, HttpServer,http};
 use std::{io,env};
@@ -52,7 +56,7 @@ async fn main() -> io::Result<()> {
             .data(pool.clone())
             .wrap(cors)
             .wrap(TracingLogger)
-            .service(web::resource("/").to(handler::index::index))
+            .configure(router::services)
     })
     .bind(&app_url)?
     .run()
