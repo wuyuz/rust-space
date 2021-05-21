@@ -15,5 +15,5 @@ fn get_conn(pool: &PgPool) -> Result<PgPooledConnection, &'static str> {
     pool.get().map_err(|_| "Can't get connection")
 }
 
-
 //https://github.com/actix/examples/blob/a66c05448eace8b1ea53c7495b27604e7e91281c/basics/todo/src/db.rs
+

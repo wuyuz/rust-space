@@ -12,6 +12,17 @@ pub fn login_with_email(user: web::Form<LoginModel>) {
 }
 
 
+pub fn verify_email() {
+
+    // 获取code值
+
+    // 验证redis
+
+    // 成功返回user页面，添加auth header
+
+}
+
+
 #[cfg(test)]
 mod test {
     use std::iter;
