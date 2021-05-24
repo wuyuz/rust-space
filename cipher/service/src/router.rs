@@ -16,12 +16,12 @@ pub fn services(cfg: &mut web::ServiceConfig) {
     );
     // web
     cfg.service(
-        web::scope("web")
+        web::scope("/web")
         .service(
             web::scope("/email")
             .service(
                 web::resource("/send")
-                .route(web::get().to(email::email_send_user))
+                .route(web::post().to(email::email_send_user))
             )
         )
     );

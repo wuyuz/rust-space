@@ -2,7 +2,7 @@ table! {
     code (id) {
         id -> Binary,
         email -> Varchar,
-        value -> Mediumint,
+        value -> Mediumtext,
         #[sql_name = "type"]
         type_ -> Tinyint,
         ip -> Nullable<Varbinary>,

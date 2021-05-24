@@ -13,6 +13,7 @@ extern crate futures;
 extern crate failure;
 extern crate derive_more;
 extern crate uuid;
+#[macro_use]
 extern crate diesel;
 
 
@@ -21,7 +22,10 @@ mod db;
 mod handler;
 mod router;
 mod model;
+mod error;
 mod utils;
+pub mod schema;
+
 
 use actix_web::{web, App, HttpServer,http};
 use std::{io,env};

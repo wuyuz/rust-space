@@ -11,7 +11,7 @@ pub fn init_pool(database_url: &str) -> Result<PgPool, PoolError> {
     Pool::builder().build(manager)
 }
 
-fn get_conn(pool: &PgPool) -> Result<PgPooledConnection, &'static str> {
+pub fn get_conn(pool: &PgPool) -> Result<PgPooledConnection, &'static str> {
     pool.get().map_err(|_| "Can't get connection")
 }
 
