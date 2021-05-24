@@ -127,15 +127,16 @@ mod test {
         let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
         let manager = ConnectionManager::<MysqlConnection>::new(database_url);
-        let conn = Pool::builder().build(manager).unwrap().get().map_err(|_| "Can't get connection");
+        let conn = Pool::builder().build(manager).unwrap().get().unwrap();
 
         let new_post = NewUser { 
+            id : b"1",
             email: "xxxxx"
          };
 
         let u = diesel::insert_into(user::table)
                 .values(&new_post)
-                .get_result(conn)
+                .execute(&conn)
                 .expect("Error saving new post");
         println!("{:?}",u)
     }
