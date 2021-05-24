@@ -101,14 +101,9 @@ table! {
 
 table! {
     user (id) {
-        id -> Binary,
+        id -> Unsigned<Bigint>,
         email -> Varchar,
-        level -> Tinyint,
-        expired_at -> Timestamp,
-        settings -> Varbinary,
         created_at -> Timestamp,
-        updated_at -> Timestamp,
-        enabled -> Tinyint,
     }
 }
 
