@@ -9,7 +9,8 @@ use crate::error::ApiError;
 use serde::Deserialize;
 use base;
 use crate::db::*;
-use crate::model::{NewUser,User};
+use crate::models::user::{NewUser,User};
+use redis::AsyncCommands;
 
 
 #[derive(Template)]
@@ -17,11 +18,6 @@ use crate::model::{NewUser,User};
 pub struct EMAILSEND<'a> {
     code: &'a str,
     email: &'a str,
-}
-
-#[derive(Deserialize)]
-pub struct EmailData {
-    email: String,
 }
 
 // send function
@@ -47,17 +43,20 @@ fn send_emails<T: IntoBody>(to: &str, body: T) -> Result<Json<HttpCode<String>>,
             respond_json(e.to_string(), 400)
         },
     } 
-
 }
 
-pub async fn email_send_user(p: web::Form<EmailData>, pool : web::Data<PgPool>) -> Result<Json<HttpCode<String>>, ApiError> {
+pub async fn email_send_user(p: web::Form<NewUser>, pool: web::Data<PgPool>, r_pool: web::Data<RPool>) -> Result<Json<HttpCode<String>>, ApiError> {
     // 查询数据库
     let conn = pool.get().expect("couldn't get db connection from pool");
-
+    p.insert_or(&conn);
 
     // 生成code， code为盐
     let code = base::utils::helper::rand_6_int(10);
-    // 写入redis
+    // 写入redis, code+email -> argon
+    let (f, b) = base::argon(&p.email, code.as_bytes()).unwrap();
+
+    let mut r_conn = r_pool.get().await.unwrap();
+    let s: String = r_conn.set_ex(&code, f,500).await.unwrap();
 
     // 渲染html
     let r =  EMAILSEND{
@@ -80,21 +79,17 @@ mod test {
         use lettre::transport::smtp::authentication::Credentials;
         use lettre::{Message, SmtpTransport, Transport}; 
         use diesel::mysql::MysqlConnection;
-        
         use diesel::r2d2::{ConnectionManager, Pool, PoolError, PooledConnection};
-
         type PgPooledConnection = PooledConnection<ConnectionManager<MysqlConnection>>;  
 
         let email = Message::builder()
             .from("cipher <cipher_cn@163.com>".parse().unwrap())
             .to("Hei <1417506149@qq.com>".parse().unwrap())
-            .subject("Happy new year")
-            
+            .subject("Happy new year")  
             .body(String::from("Be happy!"))
             .unwrap();
 
         let creds = Credentials::new("cipher_cn@163.com".to_string(), "UMXIEEGNJWQEVYAA".to_string());
-
         // Open a remote connection to gmail
         let mailer = SmtpTransport::relay("smtp.163.com")
             .unwrap()
@@ -108,43 +103,37 @@ mod test {
         } 
 
     }
-
-
    
     #[test]
     fn create_user() {
-        use crate::schema::user;
-        use crate::model::{NewUser,User};
-        use diesel::mysql::MysqlConnection;
-        use diesel::r2d2::{ConnectionManager, Pool, PoolError, PooledConnection};
+        use crate::models::user::{NewUser,User};
         use crate::diesel::RunQueryDsl;
-
-        pub type PgPool = Pool<ConnectionManager<MysqlConnection>>;
-        type PgPooledConnection = PooledConnection<ConnectionManager<MysqlConnection>>;
-
-        use dotenv::dotenv;
-        use std::env;
-
-        dotenv().ok();
-        let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-        println!("{}",database_url);
-        let manager = ConnectionManager::<MysqlConnection>::new(database_url);
-        let conn = Pool::builder().build(manager).unwrap().get().unwrap();
+        use crate::schema::user;
+        use crate::db::get_conn;
+        let conn = get_conn();
 
         let new_post = NewUser { 
-            id : b"1",
-            email: "xxxxx"
+            email: "xxxxx".into()
          };
 
         let u = diesel::insert_into(user::table)
                 .values(&new_post)
-<<<<<<< HEAD
-                .execute(&conn)
-                .expect("Error saving new post");
-=======
                 .execute(&conn);
-
->>>>>>> 49a46c4bcc39a37337a93ea9adc58052e7781b50
         println!("{:?}",u)
+    }
+
+    #[actix_rt::test]
+    async fn t_redis() {
+        use dotenv::dotenv;
+        use crate::db::*;
+        use std::env;
+        use redis::AsyncCommands;
+        
+        dotenv().ok();
+        let r_url = env::var("REDIS_URL").expect("DATABASE_URL must be set");
+
+        let mut r_conn = get_redis(&r_url).get().await.unwrap();
+        let s: String = r_conn.set_ex("xxx", "dsdf",40).await.unwrap();
+        println!("{:?}",s);
     }
 }

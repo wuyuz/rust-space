@@ -23,6 +23,10 @@ pub fn services(cfg: &mut web::ServiceConfig) {
                 web::resource("/send")
                 .route(web::post().to(email::email_send_user))
             )
+            .service(
+                web::resource("/verify")
+                .route(web::post().to(account::verify_email))
+            )
         )
     );
 }

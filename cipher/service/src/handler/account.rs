@@ -1,28 +1,30 @@
 
-use crate::model::LoginModel;
-use actix_web::{web, App, HttpResponse, HttpServer, Result};
+use crate::models::user::LoginModel;
+use actix_web::{web, App, HttpResponse, HttpServer, Result, http::StatusCode};
+use crate::db::*;
+use crate::redis::AsyncCommands;
+use crate::error::ApiError;
+use base;
 
-// 登陆验证： 邮箱
-pub fn login_with_email(user: web::Form<LoginModel>) {
-    // 获取到邮箱
+ pub async fn verify_email(req: web::Form<LoginModel>, r_pool: web::Data<RPool>) -> Result<String, ApiError> {
+    // 获取code值 验证redis
+    let mut r_conn = r_pool.get().await.unwrap();
+    match r_conn.get::<String,String>(req.code.to_string()).await {
+        Ok(c) => {
+            // let (f,b)= base::argon(&req.email,req.code.as_bytes()).unwrap();
+            // if c == f {
+            //     Ok("ok".into())
+            // }else{
+            //     Err(ApiError::new(800, "Invaild code".into()))
+            // }
+            Ok(c)
+        },
+        Err(e) => Err(ApiError::new(800, "Invaild code".into()))
+    }
 
-    // 判断是否有用户，新用户提示，第一次密码为主密码，不可修改
-
-    // 生成验证码，存储redis，发送邮件，以user_id为key
 }
 
-
-pub fn verify_email() {
-
-    // 获取code值
-
-    // 验证redis
-
-    // 成功返回user页面，添加auth header
-
-}
-
-
+// OwYGRTFcVt  ZR1JURmNWdA$fH1f
 #[cfg(test)]
 mod test {
     use std::iter;

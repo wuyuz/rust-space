@@ -67,8 +67,6 @@ pub fn decrypt(password:&str, data: &[u8]) -> Result<String,std::io::Error> {
     Ok(String::from_utf8(decrypted).unwrap())
 }
 
-
-
 mod test {
     use argon2::{self, Config};
     use crate::utils::helper;
@@ -96,7 +94,6 @@ mod test {
     fn run_argon() {
         use super::argon;
         let (r,m) = argon("12233","sdfsf".as_bytes()).unwrap();
-        // println!("r:{:?}, m: {:?}",r,m)
     }
 
     #[test]

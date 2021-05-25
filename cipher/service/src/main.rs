@@ -15,17 +15,16 @@ extern crate derive_more;
 extern crate uuid;
 #[macro_use]
 extern crate diesel;
-
+extern crate redis;
 
 mod logger;
 mod db;
 mod handler;
 mod router;
-mod model;
+mod models;
 mod error;
 mod utils;
 pub mod schema;
-
 
 use actix_web::{web, App, HttpServer,http};
 use std::{io,env};
@@ -42,10 +41,12 @@ async fn main() -> io::Result<()> {
     let app_host = env::var("APP_HOST").expect("APP_HOST not found.");
     let app_port = env::var("APP_PORT").expect("APP_PORT not found.");
     let db_url = env::var("DATABASE_URL").expect("DATABASE_URL not found.");
+    let redis_url = env::var("REDIS_URL").expect("REDIS_URL not found.");
     let app_url = format!("{}:{}", &app_host, &app_port);
 
     // 加载配置
     let pool = db::init_pool(&db_url).expect("DB pool init error");
+    let r_pool= db::get_redis(&redis_url);
 
     HttpServer::new(move || {
         let cors = Cors::default()
@@ -58,6 +59,7 @@ async fn main() -> io::Result<()> {
 
         App::new()
             .data(pool.clone())
+            .data(r_pool.clone())
             .wrap(cors)
             .wrap(TracingLogger)
             .configure(router::services)
