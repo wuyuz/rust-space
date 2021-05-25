@@ -4,7 +4,7 @@ use diesel::mysql::MysqlConnection;
 use diesel::r2d2::{ConnectionManager, Pool, PoolError, PooledConnection};
 
 pub type PgPool = Pool<ConnectionManager<MysqlConnection>>;
-type PgPooledConnection = PooledConnection<ConnectionManager<MysqlConnection>>;
+pub type PgPooledConnection = PooledConnection<ConnectionManager<MysqlConnection>>;
 
 pub fn init_pool(database_url: &str) -> Result<PgPool, PoolError> {
     let manager = ConnectionManager::<MysqlConnection>::new(database_url);

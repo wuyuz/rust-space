@@ -19,14 +19,9 @@ CREATE INDEX code_idx_email_created_at ON code (email, created_at);
 
 CREATE TABLE user
 (
-    id         BINARY(12)      NOT NULL,
+    id         SERIAL      NOT NULL,
     email      VARCHAR(64)     NOT NULL,
-    level      TINYINT         NOT NULL DEFAULT 0,
-    expired_at TIMESTAMP       NOT NULL,
-    settings   VARBINARY(5120) NOT NULL,
     created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    enabled    TINYINT         NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 ) ENGINE = INNODB;
 

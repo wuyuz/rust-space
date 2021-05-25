@@ -9,6 +9,8 @@ use crate::error::ApiError;
 use serde::Deserialize;
 use base;
 use crate::db::*;
+use crate::model::{NewUser,User};
+
 
 #[derive(Template)]
 #[template(path = "email/send_email.html")]
@@ -125,7 +127,7 @@ mod test {
 
         dotenv().ok();
         let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-
+        println!("{}",database_url);
         let manager = ConnectionManager::<MysqlConnection>::new(database_url);
         let conn = Pool::builder().build(manager).unwrap().get().unwrap();
 
@@ -136,8 +138,13 @@ mod test {
 
         let u = diesel::insert_into(user::table)
                 .values(&new_post)
+<<<<<<< HEAD
                 .execute(&conn)
                 .expect("Error saving new post");
+=======
+                .execute(&conn);
+
+>>>>>>> 49a46c4bcc39a37337a93ea9adc58052e7781b50
         println!("{:?}",u)
     }
 }
