@@ -41,9 +41,7 @@ impl NewUser {
     }
 }
 
-
 mod test {
-
     #[test]
     fn t_exits() {
         use crate::schema::user;
@@ -55,7 +53,6 @@ mod test {
         let new_user = NewUser{
             email: "xxxdfa2s".into()
         };
-
         println!("insert: {}",new_user.insert_or(&conn));
         println!("exit: {}",NewUser::exits(&conn, "xxxxx"))
     }

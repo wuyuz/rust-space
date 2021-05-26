@@ -31,6 +31,7 @@ use std::{io,env};
 use tracing::{instrument, info, error};
 use actix_cors::Cors;
 use tracing_actix_web::TracingLogger;
+// use tera::Tera;
 
 #[actix_web::main]
 async fn main() -> io::Result<()> {
@@ -47,6 +48,7 @@ async fn main() -> io::Result<()> {
     // 加载配置
     let pool = db::init_pool(&db_url).expect("DB pool init error");
     let r_pool= db::get_redis(&redis_url);
+    // let teras =Tera::new("templates/**/*").unwrap();
 
     HttpServer::new(move || {
         let cors = Cors::default()
@@ -59,6 +61,7 @@ async fn main() -> io::Result<()> {
 
         App::new()
             .data(pool.clone())
+            // .data(teras.clone())
             .data(r_pool.clone())
             .wrap(cors)
             .wrap(TracingLogger)

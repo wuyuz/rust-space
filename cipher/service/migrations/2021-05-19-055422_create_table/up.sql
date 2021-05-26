@@ -13,7 +13,7 @@ CREATE TABLE code
 (
     id         SERIAL  NOT NULL,
     email      VARCHAR(64) NOT NULL,
-    value      VARCHAR(64)   NOT NULL,
+    value      VARCHAR(64)   NOT NULL UNIQUE,
     used_at    TIMESTAMP,
     created_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     expired_at TIMESTAMP   NOT NULL,
