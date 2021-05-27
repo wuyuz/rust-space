@@ -39,7 +39,18 @@ impl NewCode {
 }
 
 impl Code {
-    pub fn find_by_code(conn: &PgPooledConnection, c: &str) -> Result<Code, ApiError> {
+    pub fn update_by_code(conn: &PgPooledConnection, c: &str) -> Result<bool,ApiError> {
+        let r = diesel::update(code
+                .filter(value.eq(c))
+                .filter(expired_at.ge(Local::now().naive_local()))
+            ).set(used_at.eq(Some(Local::now().naive_local())))
+            .execute(conn).unwrap();
+
+        tracing::error!("xx{}",r);
+        Ok(true)
+    }
+
+    pub fn find_by_code(conn: &PgPooledConnection, c: &str) -> Result<Code,ApiError> {
         code
             .filter(value.eq(c))
             .filter(expired_at.ge(Local::now().naive_local()))

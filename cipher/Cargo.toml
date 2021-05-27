@@ -4,5 +4,5 @@
 members = [
     "service",
     "base",
-    "c-mac",
+    "web"
 ]

@@ -53,7 +53,7 @@ async fn main() -> io::Result<()> {
     HttpServer::new(move || {
         let cors = Cors::default()
             .allowed_origin("http://127.0.0.1:3000")
-            .allowed_origin("http://localhost:3000")
+            .allowed_origin("http://localhost:8082")
             .allowed_methods(vec!["GET", "POST"])
             .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT])
             .allowed_header(http::header::CONTENT_TYPE)
@@ -61,7 +61,6 @@ async fn main() -> io::Result<()> {
 
         App::new()
             .data(pool.clone())
-            // .data(teras.clone())
             .data(r_pool.clone())
             .wrap(cors)
             .wrap(TracingLogger)

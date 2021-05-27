@@ -15,12 +15,6 @@ use base;
     let mut r_conn = r_pool.get().await.unwrap();
     match r_conn.get::<String,String>(req.code.to_string()).await {
         Ok(c) => {
-            // let (f,b)= base::argon(&req.email,req.code.as_bytes()).unwrap();
-            // if c == f {
-            //     Ok("ok".into())
-            // }else{
-            //     Err(ApiError::new(800, "Invaild code".into()))
-            // }
             Ok(c)
         },
         Err(e) => Err(ApiError::new(800, "Invaild code".into()))
@@ -30,9 +24,7 @@ use base;
 pub async fn verify_email(req: web::Form<LoginModel>, pool: web::Data<PgPool>) -> Result<Json<HttpCode<Code>>, ApiError> {
     let conn = pool.get().expect("couldn't get db connection from pool");
     match Code::find_by_code(&conn, &req.code) {
-        Ok(c)  => {
-            respond_json(c, 200)
-        },
+        Ok(o) => respond_json(o, 200),
         Err(e) => Err(ApiError::new(800, "Invaild code".into()))
     }
 }

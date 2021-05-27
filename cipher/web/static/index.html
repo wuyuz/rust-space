@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cipher</title>
+    <style>
+      /* body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100%;
+        width: 100%;
+        
+        display: flex;
+        background-color: black;
+        justify-content: center;
+        align-items: center;
+      }
+      .win {
+        height: 400px;
+        width: 400px;
+        opacity: 0.5;
+        border-radius: 8px;
+        box-shadow: whitesmoke;
+        background-color: rgb(37, 36, 36);
+      } */
+    </style>
+    <script src="index.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+  </head>
+  <body>
+    <div class="win">
+        <form action="" method="">
+            <input type="text" name="email">
+            <div>
+              <input type="text" name="code">
+              <button type="button" onclick="sendCode()">获取验证码</button>
+            </div>
+            <button type="button"  onclick="login()">提交</button>
+        </form>
+    </div>
+
+    <script>
+
+      // 发送验证码
+      function sendCode() {
+        jQuery.ajax({
+          method: "POST",
+          url: "http://localhost:8000/api/send_email",
+          data: { email: "1417506149@qq.com"} 
+        }).done(function( msg ) {
+           console.log(msg)
+        });
+      }
+
+      // 登陆验证
+      function login() {
+        jQuery.ajax({
+          method: "POST",
+          url: "http://localhost:8000/api/verify",
+          data: {email:"1417506149", code:"d7sIZh3sGb"}
+        })
+          .done(function(msg) {
+            console.log(msg)
+          })
+      }
+    </script>
+  </body>
+</html>
