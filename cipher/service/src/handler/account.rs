@@ -25,7 +25,7 @@ pub async fn verify_email(req: web::Form<LoginModel>, pool: web::Data<PgPool>) -
     let conn = pool.get().expect("couldn't get db connection from pool");
     match Code::find_by_code(&conn, &req.code) {
         Ok(o) => respond_json(o, 200),
-        Err(e) => Err(ApiError::new(800, "Invaild code".into()))
+        Err(e) => Err(ApiError::new(801, "Invaild code".into()))
     }
 }
 
