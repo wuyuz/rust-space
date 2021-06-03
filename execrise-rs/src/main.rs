@@ -7,6 +7,8 @@ mod lifetime;
 mod slice;
 mod closures;
 mod iterable;
+mod dyn_trait;
+mod build;
 
 
 fn main() {
