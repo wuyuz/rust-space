@@ -1,6 +1,5 @@
 
 mod test {
-
     #[test]
     fn mut_fn() {
         /*
@@ -40,5 +39,17 @@ mod test {
         //允许对a指向的内容作出修改
         a.first_name = String::from("Gates");
         println!("{}:{}",a.last_name, a.first_name);
+    }
+
+
+    #[test]
+    fn mut_var() {
+        let mut c = 2;
+        let mut closure = || {
+            c += 1;
+            println!("in the closure, c= {}",c);
+        };
+        closure();
+        println!("out of the closure, c={}",c);
     }
 }

@@ -1,0 +1,24 @@
+[package]
+name = "redis-rs"
+version = "0.1.0"
+authors = ["alex"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+mini-redis = "0.4"
+bytes = "1"
+
+[[example]]   # 编写测试文件
+name= "hello-redis"
+path= "example/hello-redis.rs"
+
+[[example]]   # 编写测试文件
+name= "spawn"
+path= "example/spawn_svc.rs"
+
+[[example]]   # 编写测试文件
+name= "channel"
+path= "example/channel.rs"

@@ -12,6 +12,8 @@ mod build;
 mod mut_a;
 mod test_rt;
 
+mod algorithm;
+
 fn main() {
 
 }

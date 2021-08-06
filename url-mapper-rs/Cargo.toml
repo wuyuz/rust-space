@@ -1,0 +1,18 @@
+[package]
+name = "url-mapper-rs"
+version = "0.1.0"
+authors = ["alex"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.41"
+lazy_static = "1.4.0"
+config = { version = "0.11.0", features = ["json"] }
+serde = { version = "1.0.126", features = ["derive"] }
+serde_json = "1.0.64"
+sqlx = { version = "0.5.5", features = ["runtime-tokio-rustls", "postgres", "migrate"] }
+tokio = { version = "1.6.2", features = ["full"] }
+tracing = "0.1.26"
+tracing-subscriber = "0.2.18"
