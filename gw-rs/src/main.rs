@@ -1,9 +1,7 @@
 #[macro_use]
 extern crate serde_derive;
-
 use reqwest::header::{REFERER,COOKIE,CONTENT_TYPE};
 use serde::{Deserialize};
-
 
 #[derive(Debug, Deserialize)]
 struct Session {
@@ -13,7 +11,7 @@ struct Session {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let r = reqwest::Client::builder().danger_accept_invalid_certs(true).build().unwrap();
-    let resp: Session = r.put("https://192.168.0.81/sys/log_in")
+    let resp: Session = r.put("https://192.168.0.81/sys/log_in/")
         .header(REFERER, "https://192.168.0.81")
         .body("{\"password\":\"00000000\"}")
         .send().await?.json().await?;
@@ -22,10 +20,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let res = r.get("https://192.168.0.81/data/tags/")
     .header(REFERER, "https://192.168.0.81")
-    .header(COOKIE, resp.session_id)
+    .header(COOKIE, String::from("ADAMID=")+&resp.session_id)
     .send().await?.text().await?;
 
-    println!("result: {:#?}", res);
+    println!("result: {:#?},{}", res,String::from("ADAMID=")+&resp.session_id);
     Ok(())
 }
 
