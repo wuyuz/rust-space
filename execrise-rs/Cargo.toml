@@ -9,6 +9,8 @@ edition = "2018"
 [dependencies]
 actix-rt = "*"
 criterion = "0.3"
+regex ="1"
+clap = "2"
 
 [[bench]]
 name = "my_benchmark"

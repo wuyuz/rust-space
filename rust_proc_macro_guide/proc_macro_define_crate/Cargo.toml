@@ -1,14 +1,15 @@
 [package]
-name = "ru-rs"
+name = "proc_macro_define_crate"
 version = "0.1.0"
-authors = ["alex"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-serial = "0.4"
+quote = "1"
+#syn = "1.0"
+syn = {version="1.0",features=["full","extra-traits"]}
 
-[[example]]
-name= "fx"
-path= "example/fx.rs"
+
+[lib]
+proc-macro = true

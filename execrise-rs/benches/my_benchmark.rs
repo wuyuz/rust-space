@@ -9,9 +9,26 @@ fn fibonacci(n: u64) -> u64 {
     }
 }
 
-fn bench_fib(c: &mut Criterion) {
-    c.bench_function("fib 20", |b| b.iter(|| fibonacci(black_box(20))));
+fn fast_fibonacci(nth:u64) -> u64  {
+    let mut a = 0;
+    let mut b = 0;
+    let mut c = 0;
+    for _ in 1..nth {
+        c = a+b;
+        a = b;
+        b = c;
+    }
+    c
 }
 
-criterion_group!(benches, bench_fib);
+fn bench_fib_slow(c: &mut Criterion) {
+    c.bench_function("slow fib 20", |b| b.iter(|| fibonacci(black_box(20))));
+}
+
+fn bench_fib_fast(c: &mut Criterion) {
+    c.bench_function("fast fib 20", |b| b.iter(|| fast_fibonacci(black_box(20))));
+}
+
+
+criterion_group!(benches, bench_fib_slow, bench_fib_fast);  // 基准测试
 criterion_main!(benches);  // cargo bench
