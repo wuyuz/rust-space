@@ -88,7 +88,6 @@ fn generate_setter_functions(fields: &StructFields) -> syn::Result<proc_macro2::
                     self
                 }
             };
-
             // 下面这个分支是第七关加入的
         } else if let Some(ref user_specified_ident) = get_user_specified_ident_for_vec(&fields[idx]).unwrap() {
             let inner_ty = get_generic_inner_type(type_,"Vec").ok_or(syn::Error::new(fields[idx].span(),"each field must be specified with Vec field"))?;

@@ -21,25 +21,25 @@ impl<T> Option<T> {
     }
 }
 
-mod test {
-    #[test]
-    fn t_option() {
-        let o1: Option<i32> = Some(128);
-        o1.unwrap(); // this is fine
-    
-        let o2: Option<i32> = None;  // 如果为None的话，调用unwrap就会报错
-        o2.unwrap(); // this panics!
-    }
-
-    #[test]
-    fn  t_my_option() {
-        use super::Option::{self,None,Some};
-
-        let o1: Option<i32> = Some(128);
-        o1.unwrap(); // this is fine
-    
-        let o2: Option<i32> = None;
-        o2.unwrap(); // this panics! 自定义报错
-    }
-    
-}
+// mod test {
+//     #[test]
+//     fn t_option() {
+//         let o1: Option<i32> = Some(128);
+//         o1.unwrap(); // this is fine
+//
+//         let o2: Option<i32> = None;  // 如果为None的话，调用unwrap就会报错
+//         o2.unwrap(); // this panics!
+//     }
+//
+//     #[test]
+//     fn  t_my_option() {
+//         use super::Option::{self,None,Some};
+//
+//         let o1: Option<i32> = Some(128);
+//         o1.unwrap(); // this is fine
+//
+//         let o2: Option<i32> = None;
+//         o2.unwrap(); // this panics! 自定义报错
+//     }
+//
+// }
