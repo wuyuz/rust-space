@@ -1,0 +1,2 @@
+[workspace]
+members = ["comm", "domains", "adapters", "services","db", "utils"]

@@ -1,0 +1,404 @@
+2022-08-13T16:27:45.852536+08:00 INFO adapters - Connecting to database...
+2022-08-13T16:27:46.761083+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 45.292ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T16:27:46.761266+08:00 INFO adapters - Connected to database...
+2022-08-13T16:27:46.762058+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-13T16:27:46.762365+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-13T16:30:36.969279+08:00 ERROR actix_http::h1::dispatcher - stream error: Request parse error: Invalid Header provided
+2022-08-13T17:19:22.746411+08:00 INFO actix_server::server - SIGINT received; starting forced shutdown
+2022-08-13T17:19:22.748038+08:00 INFO actix_server::accept - Accept thread stopped
+2022-08-13T17:19:22.748573+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.749001+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.753376+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.753552+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.753646+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.753707+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.755709+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:22.755789+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T17:19:31.525388+08:00 INFO adapters - Connecting to database...
+2022-08-13T17:19:32.013041+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 43.244ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T17:19:32.013447+08:00 INFO adapters - Connected to database...
+2022-08-13T17:19:32.014650+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-13T17:19:32.014885+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-13T22:54:00.850617+08:00 INFO adapters - Connecting to database...
+2022-08-13T22:54:01.320088+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 45.060ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T22:54:01.320280+08:00 INFO adapters - Connected to database...
+2022-08-13T22:54:01.321262+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-13T22:54:01.321416+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-13T22:56:49.160651+08:00 INFO actix_server::server - SIGINT received; starting forced shutdown
+2022-08-13T22:56:49.171778+08:00 INFO actix_server::accept - Accept thread stopped
+2022-08-13T22:56:49.172597+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.175028+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.175144+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.175394+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.175516+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.175597+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.179998+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:49.180047+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:56:56.052555+08:00 INFO adapters - Connecting to database...
+2022-08-13T22:56:56.506389+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 44.934ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T22:56:56.506648+08:00 INFO adapters - Connected to database...
+2022-08-13T22:56:56.507568+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-13T22:56:56.507752+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-13T22:58:19.096633+08:00 INFO actix_server::server - SIGINT received; starting forced shutdown
+2022-08-13T22:58:19.097218+08:00 INFO actix_server::accept - Accept thread stopped
+2022-08-13T22:58:19.097385+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.098089+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.098275+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.098557+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.099175+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.099347+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.099579+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:19.099793+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T22:58:34.355632+08:00 INFO adapters - Connecting to database...
+2022-08-13T22:58:34.788766+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 40.965ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T22:58:34.788897+08:00 INFO adapters - Connected to database...
+2022-08-13T22:58:34.789365+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-13T22:58:34.789441+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-13T22:59:30.071494+08:00 INFO sqlx::query - UPDATE `role` SET `role_name` …; rows affected: 0, rows returned: 0, elapsed: 81.094ms
+
+UPDATE
+  `role`
+SET
+  `role_name` = ?
+WHERE
+  `role`.`id` = ?
+
+2022-08-13T23:00:22.990751+08:00 INFO sqlx::query - UPDATE `role` SET `role_name` …; rows affected: 0, rows returned: 0, elapsed: 38.894ms
+
+UPDATE
+  `role`
+SET
+  `role_name` = ?
+WHERE
+  `role`.`id` = ?
+
+2022-08-13T23:02:48.249606+08:00 INFO actix_server::server - SIGINT received; starting forced shutdown
+2022-08-13T23:02:48.251826+08:00 INFO actix_server::accept - Accept thread stopped
+2022-08-13T23:02:48.252158+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.253852+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.254391+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.254806+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.255377+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.255929+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.256949+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:48.257840+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-13T23:02:53.669458+08:00 INFO adapters - Connecting to database...
+2022-08-13T23:02:54.100562+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 45.210ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T23:02:54.100830+08:00 INFO adapters - Connected to database...
+2022-08-13T23:02:54.101788+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-13T23:02:54.102200+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-13T23:03:00.739617+08:00 INFO sqlx::query - INSERT INTO `role` (`id`, …; rows affected: 1, rows returned: 0, elapsed: 108.573ms
+
+INSERT INTO
+  `role` (`id`, `role_name`)
+VALUES
+  (?, ?)
+
+2022-08-13T23:03:01.147110+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 42.095ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-13T23:03:01.237617+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 89.649ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:20.545535+08:00 INFO adapters - Connecting to database...
+2022-08-16T12:54:21.079909+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 101.991ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-16T12:54:21.080258+08:00 INFO adapters - Connected to database...
+2022-08-16T12:54:21.081225+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-16T12:54:21.081482+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-16T12:54:29.064493+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 102.835ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:30.985963+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 43.468ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:32.255593+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 38.981ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:34.561272+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 39.358ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:35.734257+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 42.795ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:41.582360+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 86.604ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:42.701279+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 41.209ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:43.708040+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 38.894ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T12:54:45.007459+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 39.989ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T13:00:52.991736+08:00 INFO actix_server::server - SIGINT received; starting forced shutdown
+2022-08-16T13:00:52.993354+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.993863+08:00 INFO actix_server::accept - Accept thread stopped
+2022-08-16T13:00:52.994088+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.994235+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.994386+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.994546+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.994818+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.995038+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:00:52.995264+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:01:00.507237+08:00 INFO adapters - Connecting to database...
+2022-08-16T13:01:01.083381+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 36.373ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-16T13:01:01.083586+08:00 INFO adapters - Connected to database...
+2022-08-16T13:01:01.084568+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-16T13:01:01.084759+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime
+2022-08-16T13:01:09.710241+08:00 INFO sqlx::query - INSERT INTO `role` (`id`, …; rows affected: 1, rows returned: 0, elapsed: 127.618ms
+
+INSERT INTO
+  `role` (`id`, `role_name`)
+VALUES
+  (?, ?)
+
+2022-08-16T13:01:10.172222+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 37.566ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-16T13:01:10.248792+08:00 INFO sqlx::query - SELECT `role`.`id`, `role`.`role_name` FROM …; rows affected: 0, rows returned: 1, elapsed: 73.623ms
+
+SELECT
+  `role`.`id`,
+  `role`.`role_name`
+FROM
+  `role`
+WHERE
+  `role`.`id` = ?
+LIMIT
+  ?
+
+2022-08-16T13:22:53.677972+08:00 INFO actix_server::server - SIGINT received; starting forced shutdown
+2022-08-16T13:22:53.678758+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.680139+08:00 INFO actix_server::accept - Accept thread stopped
+2022-08-16T13:22:53.680507+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.681056+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.681171+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.681747+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.681879+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.682003+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:22:53.682086+08:00 INFO actix_server::worker - Shutting down idle worker
+2022-08-16T13:23:00.457659+08:00 INFO adapters - Connecting to database...
+2022-08-16T13:23:01.113918+08:00 INFO sqlx::query - SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),time_zone='+00:00',NAMES …; rows affected: 0, rows returned: 0, elapsed: 47.345ms
+
+SET
+  sql_mode =(
+    SELECT
+      CONCAT(
+        @ @sql_mode,
+        ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION'
+      )
+  ),
+  time_zone = '+00:00',
+  NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+2022-08-16T13:23:01.114121+08:00 INFO adapters - Connected to database...
+2022-08-16T13:23:01.115207+08:00 INFO actix_server::builder - Starting 8 workers
+2022-08-16T13:23:01.115588+08:00 INFO actix_server::server - Actix runtime found; starting in Actix runtime

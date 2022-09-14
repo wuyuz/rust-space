@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "gui",
+    "encrypt"
+]
+# cargo run -p gui / cargo test -p encrypt 
